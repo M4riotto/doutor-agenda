@@ -1,6 +1,8 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { db } from "@/db";
+
 import { auth } from "@/lib/auth";
 import SignOutButton from "./components/sign-out-button";
 
@@ -11,7 +13,14 @@ const DashboardPage = async () => {
   if (!session?.user) {
     redirect("/authentication");
   }
-
+  const clinics = await db.query.usersToClinicsTable.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  });
+  if (clinics.length === 0) {
+    redirect("/clinic-form");
+  }
   return (
     <div>
       <h1>Dashboard</h1>

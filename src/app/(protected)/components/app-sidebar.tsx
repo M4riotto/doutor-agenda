@@ -100,11 +100,12 @@ export function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton size="lg">
                   <Avatar>
-                    <AvatarFallback>F</AvatarFallback>
+                    <AvatarFallback>VG</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="text-sm">
-                      {/* {session.data?.user?.clinic?.name} */}
+                      {session.data?.user?.clinic.name ||
+                        "Clínica não encontrada"}
                     </p>
                     <p className="text-muted-foreground text-sm">
                       {session.data?.user.email}

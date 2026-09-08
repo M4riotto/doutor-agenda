@@ -24,15 +24,17 @@ const clinicFormSchema = z.object({
   name: z.string().trim().min(1, { message: "Nome é obrigatório" }),
 });
 
+type ClinicFormValues = z.infer<typeof clinicFormSchema>;
+
 const ClinicForm = () => {
-  const form = useForm<z.infer<typeof clinicFormSchema>>({
+  const form = useForm<ClinicFormValues>({
     resolver: zodResolver(clinicFormSchema),
     defaultValues: {
       name: "",
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof clinicFormSchema>) => {
+  const onSubmit = async (data: ClinicFormValues) => {
     try {
       await createClinic(data.name);
     } catch (error) {

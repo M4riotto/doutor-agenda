@@ -81,7 +81,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    className={
+                      pathname === item.url
+                        ? "border-l-4 border-solid border-blue-500 bg-blue-300 hover:bg-blue-300"
+                        : ""
+                    }
+                  >
                     <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>

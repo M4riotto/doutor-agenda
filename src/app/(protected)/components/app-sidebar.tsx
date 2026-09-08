@@ -85,8 +85,8 @@ export function AppSidebar() {
                     asChild
                     className={
                       pathname === item.url
-                        ? "border-l-4 border-solid border-blue-500 bg-blue-300 hover:bg-blue-300"
-                        : ""
+                        ? "border-l-4 border-solid border-blue-500 bg-blue-200 text-blue-500 hover:bg-blue-200 hover:text-blue-500"
+                        : "hover:bg-blue-200 hover:text-blue-500"
                     }
                   >
                     <Link href={item.url}>
@@ -111,11 +111,11 @@ export function AppSidebar() {
                   </Avatar>
                   <div>
                     <p className="text-sm">
-                      {session.data?.user?.clinic.name ||
+                      {session.data?.user?.clinic?.name ||
                         "Clínica não encontrada"}
                     </p>
                     <p className="text-muted-foreground text-sm">
-                      {session.data?.user.email}
+                      {session.data?.user?.email}
                     </p>
                   </div>
                 </SidebarMenuButton>

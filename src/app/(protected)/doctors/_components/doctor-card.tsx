@@ -74,14 +74,16 @@ const DoctorCard = ({ doctor }: DoctorCardProps) => {
           <DialogTrigger asChild>
             <Button className="w-full">Ver Detalhes</Button>
           </DialogTrigger>
-          <UpsertDoctorForm
-            doctor={{
-              ...doctor,
-              availableFromTime: availability.from.format("HH:mm:ss"),
-              availableToTime: availability.to.format("HH:mm:ss"),
-            }}
-            onSuccess={() => setIsUpsertDoctorFormOpen(false)}
-          />
+          {isUpsertDoctorFormOpen && (
+            <UpsertDoctorForm
+              doctor={{
+                ...doctor,
+                availableFromTime: availability.from.format("HH:mm:ss"),
+                availableToTime: availability.to.format("HH:mm:ss"),
+              }}
+              onSuccess={() => setIsUpsertDoctorFormOpen(false)}
+            />
+          )}
         </Dialog>
       </CardFooter>
     </Card>
